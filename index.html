@@ -1,708 +1,206 @@
 <!doctype html>
-<html lang="en">
+<html lang="th">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>May & Boy — Wedding Invitation</title>
-
-  <!-- Fonts (serif for names + clean sans for body) -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>May & Boy Invitation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Pridi:wght@300;400;500&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg: #FFFFFF;          /* Pure White */
-      --ink: #1F1F1F;
-      --muted: #6B6B6B;
-      --line: rgba(31,31,31,.10);
-
-      /* Wedding Theme (Oros family) */
-      --oros:   #F7D8CF;  /* soft peach */
-      --apricot:#F6D2B6;  /* light orange */
-      --blush:  #F5C7D3;  /* light pink */
-      --latte:  #D8B7A6;  /* light brown */
-
-      --peach-2:#FBE8E2;
-      --peach-ink:#B46E63;
-
-      --shadow: 0 18px 48px rgba(0,0,0,.06);
-      --radius: 22px;
-
-      --serif: "Cormorant Garamond", serif;
-      --sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --bg:#f6f6f6;
+      --card:#fcfbfa;
+      --line:#e5e2df;
+      --text:#262626;
+      --muted:#707070;
+      --accent:#ebc9bc;
     }
-
     *{box-sizing:border-box}
-    html,body{height:100%}
     body{
       margin:0;
-      font-family:var(--sans);
-      color:var(--ink);
+      background:var(--bg);
+      color:var(--text);
+      font-family:"Pridi", serif;
+      line-height:1.5;
+    }
+    .container{max-width:920px;margin:0 auto;padding:18px 18px 36px}
+
+    .game-banner{
+      height:240px;
+      border:1px solid #cfcfcf;
+      border-radius:6px;
       background:
-        radial-gradient(900px 420px at 80% -10%, var(--peach-2), transparent 60%),
-        radial-gradient(700px 360px at 10% 20%, rgba(247,216,207,.35), transparent 65%),
-        var(--bg);
-      letter-spacing:.1px;
+        radial-gradient(circle at 18% 22%, rgba(255,255,255,.8) 0 12px, transparent 13px),
+        radial-gradient(circle at 48% 18%, rgba(255,255,255,.85) 0 15px, transparent 16px),
+        radial-gradient(circle at 75% 16%, rgba(255,255,255,.8) 0 14px, transparent 15px),
+        linear-gradient(180deg,#57b9eb 0%,#6bc7f6 67%,#53a542 67%,#53a542 78%,#d6955a 78%,#d6955a 100%);
+      position:relative;
+      overflow:hidden;
+    }
+    .game-banner::before{
+      content:"🏰";
+      position:absolute;
+      right:180px;
+      bottom:52px;
+      font-size:96px;
+    }
+    .game-banner::after{
+      content:"🧒 👧 🪙🪙🪙🪙 🧑";
+      position:absolute;
+      bottom:58px;
+      left:24px;
+      font-size:36px;
+      letter-spacing:5px;
+      white-space:nowrap;
     }
 
-    a{color:inherit}
-    .wrap{max-width:980px;margin:0 auto;padding:22px}
-    .topbar{
-      display:flex;justify-content:space-between;align-items:center;
-      padding:10px 0 0;
-    }
-    .badge{
-      font-size:12px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:var(--peach-ink);
-      background:linear-gradient(180deg, rgba(247,216,207,.55), rgba(247,216,207,.22));
-      border:1px solid rgba(180,110,99,.18);
-      padding:8px 12px;border-radius:999px;
-      backdrop-filter: blur(6px);
-    }
-    .nav{
-      display:flex;gap:14px;flex-wrap:wrap;
-      font-size:13px;color:rgba(31,31,31,.72);
-    }
-    .nav a{ text-decoration:none; padding:8px 10px; border-radius:999px; }
-    .nav a:hover{ background:rgba(247,216,207,.25); }
-
-    /* Theme dots (symbols) */
-    .theme-dots{
-      display:flex;gap:8px;align-items:center;margin-top:14px;flex-wrap:wrap;
-    }
-    .theme-dot{
-      width:14px;height:14px;border-radius:999px;
-      border:1px solid rgba(31,31,31,.10);
-      box-shadow: 0 10px 18px rgba(0,0,0,.06);
-    }
-    .theme-dot.oros{ background: var(--oros); }
-    .theme-dot.apricot{ background: var(--apricot); }
-    .theme-dot.blush{ background: var(--blush); }
-    .theme-dot.latte{ background: var(--latte); }
-    .theme-label{
-      font-size:12px; letter-spacing:.14em; text-transform:uppercase;
-      color:rgba(31,31,31,.55);
+    .panel{
+      margin-top:16px;
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:22px;
+      box-shadow:0 2px 10px rgba(0,0,0,.03);
     }
 
-    /* Hero */
     .hero{
-      margin-top:18px;
-      position:relative;
-      border-radius:var(--radius);
-      overflow:hidden;
-      border:1px solid var(--line);
-      box-shadow: var(--shadow);
-      background:
-        radial-gradient(700px 380px at 15% 0%, rgba(247,216,207,.55), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.72));
-    }
-    .hero-inner{
       display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:26px;
-      padding:34px 34px 30px;
+      grid-template-columns:1.25fr .85fr;
+      gap:18px;
       align-items:center;
+      background:linear-gradient(180deg,#f4efed 0%,#faf9f8 100%);
     }
-    .names{
-      font-family:var(--serif);
-      font-weight:600;
-      font-size: clamp(40px, 5vw, 64px);
-      letter-spacing:.02em;
-      margin:0;
-      line-height:1.05;
-    }
-    .sub{
-      margin:14px 0 0;
-      color:rgba(31,31,31,.72);
-      font-size:15px;
-      line-height:1.7;
-      max-width:58ch;
-    }
-    .hero-meta{
-      margin-top:18px;
-      display:flex;gap:10px;flex-wrap:wrap;
-    }
-    .pill{
+    h1,h2{margin:0 0 8px;font-family:"Playfair Display", serif}
+    h1{font-size:56px;font-weight:600;line-height:1.1}
+    .subtitle{margin:0;color:var(--muted);max-width:58ch}
+
+    .meta{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+    .chip{
       border:1px solid var(--line);
-      background: rgba(255,255,255,.75);
       border-radius:999px;
-      padding:10px 12px;
-      font-size:13px;
-      color:rgba(31,31,31,.8);
-      display:flex;gap:8px;align-items:center;
-    }
-    .dot{
-      width:8px;height:8px;border-radius:50%;
-      background: var(--oros);
-      border:1px solid rgba(180,110,99,.25);
-    }
-    .cta-row{ margin-top:18px; display:flex; gap:10px; flex-wrap:wrap; }
-    .btn{
-      appearance:none;border:1px solid var(--line);
-      padding:12px 14px;border-radius:999px;
-      background: rgba(255,255,255,.85);
-      color:rgba(31,31,31,.88);
-      font-size:14px;
-      cursor:pointer;
-      text-decoration:none;
-      display:inline-flex;gap:10px;align-items:center;
-      transition: transform .12s ease, background .12s ease;
-    }
-    .btn:hover{ transform: translateY(-1px); background: rgba(247,216,207,.30); }
-    .btn.primary{
-      background: linear-gradient(180deg, rgba(247,216,207,.9), rgba(247,216,207,.55));
-      border-color: rgba(180,110,99,.18);
-      color: rgba(88,40,34,.95);
+      padding:5px 10px;
+      font-size:12px;
+      color:#555;
+      background:#fff;
     }
 
-    /* Airy photo placeholder */
-    .photo-card{
-      position:relative;
-      border-radius:20px;
+    .btns{display:flex;flex-wrap:wrap;gap:8px}
+    .btn{
       border:1px solid var(--line);
-      background:
-        linear-gradient(135deg, rgba(247,216,207,.35), rgba(255,255,255,.9)),
-        repeating-linear-gradient(0deg, rgba(31,31,31,.05), rgba(31,31,31,.05) 1px, transparent 1px, transparent 10px);
-      aspect-ratio: 4 / 5;
-      overflow:hidden;
+      border-radius:999px;
+      padding:7px 13px;
+      font-size:13px;
+      color:#463f3b;
+      text-decoration:none;
+      background:#fff;
+    }
+    .btn.primary{background:#f3ded4;border-color:#eac8ba}
+
+    .photo-box{
+      border:1px solid var(--line);
+      border-radius:12px;
+      height:280px;
+      background:linear-gradient(135deg,#eee0db,#f8f7f7);
       display:flex;
       align-items:flex-end;
-      justify-content:flex-start;
-    }
-    .photo-label{
-      width:100%;
-      padding:12px 14px;
+      padding:12px;
+      color:#7a716f;
       font-size:12px;
-      color:rgba(31,31,31,.70);
-      background: linear-gradient(180deg, transparent, rgba(255,255,255,.92));
-      border-top:1px solid rgba(31,31,31,.06);
-    }
-    .photo-card::before{
-      content:"";
-      position:absolute;inset:-40px -40px auto auto;
-      width:220px;height:220px;border-radius:50%;
-      background: radial-gradient(circle, rgba(247,216,207,.75), transparent 70%);
-      transform: rotate(12deg);
-      pointer-events:none;
     }
 
-    /* Section layout */
-    section{
-      margin-top:18px;
-      border-radius:var(--radius);
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.72);
-      box-shadow: 0 10px 30px rgba(0,0,0,.04);
-      overflow:hidden;
-    }
-    .section-inner{ padding:26px; position:relative; }
-    .kicker{
-      font-size:12px;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      color:var(--peach-ink);
-      margin:0 0 10px;
-    }
-    h2{
-      font-family:var(--serif);
-      font-weight:600;
-      font-size: clamp(24px, 3.4vw, 32px);
-      margin:0 0 10px;
-      letter-spacing:.01em;
-    }
-    .lead{
-      margin:0;
-      color:rgba(31,31,31,.72);
-      line-height:1.8;
-      font-size:15px;
-    }
-
-    .grid-2{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:18px;
-      margin-top:18px;
-    }
-    .card{
-      border:1px solid var(--line);
-      border-radius:18px;
-      background: rgba(255,255,255,.80);
-      padding:18px;
-    }
-    .label{
-      font-size:12px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:rgba(31,31,31,.55);
-      margin:0 0 6px;
-    }
-    .value{
-      margin:0;
-      font-size:15px;
-      line-height:1.7;
-      color:rgba(31,31,31,.88);
-    }
-    .value strong{
-      font-family:var(--serif);
-      font-weight:600;
-      font-size:18px;
-    }
-
-    /* Gallery card (4 photos, airy grid) */
-    .gallery-card{
-      margin-top:18px;
-    }
-    .gallery{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap:12px;
-      margin-top:14px;
-    }
-    .g-item{
-      border-radius:18px;
-      border:1px solid rgba(31,31,31,.10);
-      overflow:hidden;
-      background: rgba(255,255,255,.86);
-      box-shadow: 0 10px 26px rgba(0,0,0,.04);
-      cursor:pointer;
-      position:relative;
-      min-height: 160px;
-    }
-    .g-item img{
-      width:100%; height:100%;
-      object-fit:cover;
-      display:block;
-      transform: scale(1.02);
-      transition: transform .18s ease, filter .18s ease;
-      filter: brightness(1.02) contrast(1.02);
-    }
-    .g-item:hover img{ transform: scale(1.06); }
-
-    /* Balanced 4 layout: 2x2 on desktop, airy */
-    .g1{ grid-column: span 6; aspect-ratio: 4/3; }
-    .g2{ grid-column: span 6; aspect-ratio: 4/3; }
-    .g3{ grid-column: span 6; aspect-ratio: 4/3; }
-    .g4{ grid-column: span 6; aspect-ratio: 4/3; }
-
-    /* Map placeholder */
+    .small-title{font-size:11px;text-transform:uppercase;color:#b08d7f;letter-spacing:.13em;margin-bottom:6px}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .block{border:1px solid var(--line);border-radius:12px;padding:14px;background:#fff}
     .map{
-      border-radius:18px;
-      border:1px dashed rgba(31,31,31,.18);
-      background:
-        linear-gradient(135deg, rgba(247,216,207,.28), rgba(255,255,255,.92));
-      aspect-ratio: 16 / 9;
-      position:relative;
-      overflow:hidden;
-    }
-    .map::after{
-      content:"Map Placeholder";
-      position:absolute;inset:0;
-      display:flex;align-items:center;justify-content:center;
-      font-size:13px;color:rgba(31,31,31,.60);
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
-    .map-pin{
-      position:absolute;
-      left:50%;top:50%;
-      transform: translate(-50%, -60%);
-      width:18px;height:18px;border-radius:50%;
-      background: var(--oros);
-      border:1px solid rgba(180,110,99,.25);
-      box-shadow: 0 10px 24px rgba(0,0,0,.10);
-    }
-    .map-pin::after{
-      content:"";
-      position:absolute;
-      left:50%;top:100%;
-      transform: translateX(-50%);
-      width:0;height:0;
-      border-left:7px solid transparent;
-      border-right:7px solid transparent;
-      border-top:10px solid rgba(247,216,207,.95);
-      filter: drop-shadow(0 2px 1px rgba(0,0,0,.08));
-    }
-
-    /* Decorative line art */
-    .art{
-      position:absolute;
-      pointer-events:none;
-      opacity:.55;
-      filter: drop-shadow(0 10px 18px rgba(0,0,0,.04));
-    }
-    .art.flower-1{ right:-40px; top:-30px; width:220px; }
-    .art.flower-2{ left:-46px; bottom:-56px; width:240px; opacity:.38; }
-    .art.couple{
-      position:static;
-      width:180px;
-      margin-left:auto;
-      opacity:.7;
-    }
-
-    /* Lightbox */
-    .lightbox{
-      position:fixed;
-      inset:0;
-      background: rgba(15,15,15,.72);
-      display:none;
+      height:130px;
+      border:1px dashed #d8d3cf;
+      border-radius:10px;
+      display:flex;
       align-items:center;
       justify-content:center;
-      padding: 18px;
-      z-index: 9999;
-    }
-    .lightbox.open{ display:flex; }
-    .lightbox-panel{
-      width:min(980px, 96vw);
-      border-radius:20px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 30px 80px rgba(0,0,0,.35);
-      position:relative;
-    }
-    .lightbox-img{
-      width:100%;
-      height:auto;
-      max-height: 82vh;
-      display:block;
-      object-fit:contain;
-      background: rgba(0,0,0,.16);
-    }
-    .lightbox-bar{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-      padding:12px 12px;
-      color: rgba(255,255,255,.85);
+      color:#a79b95;
       font-size:13px;
+      letter-spacing:.06em;
     }
-    .lb-btn{
-      border:1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.10);
-      color: rgba(255,255,255,.90);
-      padding:10px 12px;
-      border-radius:999px;
-      cursor:pointer;
-      font-size:13px;
-    }
-    .lb-btn:hover{ background: rgba(255,255,255,.16); }
+    p{margin:0;color:#585858}
 
-    footer{
-      text-align:center;
-      padding:26px 8px 36px;
-      color:rgba(31,31,31,.55);
-      font-size:13px;
-      line-height:1.8;
-    }
-    .divider{
-      height:1px;background:var(--line);
-      margin:18px 0 0;
-    }
-    .hint{
-      font-size:12px; color:rgba(31,31,31,.58); line-height:1.6; margin:8px 0 0;
-    }
-
-    /* Responsive */
-    @media (max-width: 860px){
-      .hero-inner{ grid-template-columns: 1fr; }
-      .photo-card{ aspect-ratio: 16 / 10; }
-      .art.couple{ margin: 6px 0 0; }
-    }
-    @media (max-width: 720px){
-      /* Make gallery 1 column for very airy mobile */
-      .g1,.g2,.g3,.g4{ grid-column: span 12; aspect-ratio: 16/10; }
-    }
-    @media (max-width: 620px){
-      .wrap{ padding:16px; }
-      .section-inner{ padding:20px; }
-      .grid-2{ grid-template-columns: 1fr; }
-      .nav{ display:none; }
+    @media (max-width:760px){
+      .hero,.two-col{grid-template-columns:1fr}
+      h1{font-size:44px}
+      .game-banner{height:180px}
+      .game-banner::before{font-size:72px;right:40px;bottom:38px}
+      .game-banner::after{font-size:26px;bottom:44px}
     }
   </style>
 </head>
-
 <body>
-  <script>
-    // ✅ Put your Google Form link here:
-    const RSVP_URL = "PASTE_YOUR_GOOGLE_FORM_LINK_HERE";
-  </script>
+  <main class="container">
+    <section class="game-banner" aria-label="Banner style game"></section>
 
-  <div class="wrap">
-    <div class="topbar">
-      <div class="badge">Wedding Invitation</div>
-      <nav class="nav" aria-label="Section navigation">
-        <a href="#welcome">Welcome</a>
-        <a href="#details">Details</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#venue">Venue</a>
-        <a href="#rsvp">RSVP</a>
-      </nav>
-    </div>
-
-    <!-- HERO -->
-    <header class="hero" id="top">
-      <div class="hero-inner">
-        <div>
-          <h1 class="names">May <span style="color:rgba(31,31,31,.55);font-weight:400;">&</span> Boy</h1>
-          <p class="sub">
-            With hearts full of gratitude, we invite you to join us as we begin our next chapter—surrounded by love, laughter, and the people who mean the most.
-          </p>
-
-          <div class="hero-meta" aria-label="Quick details">
-            <div class="pill"><span class="dot"></span> <span><strong>Date:</strong> 2027 • (Your Day)</span></div>
-            <div class="pill"><span class="dot"></span> <span><strong>Time:</strong> 18:00</span></div>
-            <div class="pill"><span class="dot"></span> <span><strong>Dress Code:</strong> Soft Neutrals</span></div>
-          </div>
-
-          <!-- Theme color symbols -->
-          <div class="theme-dots" aria-label="Wedding theme colors">
-            <span class="theme-label">Theme</span>
-            <span class="theme-dot oros" title="Oros / Soft Peach"></span>
-            <span class="theme-dot apricot" title="Light Orange"></span>
-            <span class="theme-dot blush" title="Light Pink"></span>
-            <span class="theme-dot latte" title="Light Brown"></span>
-          </div>
-
-          <div class="cta-row">
-            <a class="btn primary" href="#rsvp">RSVP</a>
-            <a class="btn" href="#venue">View Venue</a>
-          </div>
-
-          <div class="divider"></div>
-
-          <p class="hint">
-            Minimalist Korean-style • Pure White + Oros palette • One-page mobile invitation
-          </p>
+    <section class="panel hero" id="top">
+      <div>
+        <div class="small-title">Invitation</div>
+        <h1>May &amp; Boy</h1>
+        <p class="subtitle">ด้วยความยินดีอย่างยิ่ง เราขอเชิญทุกคนมาร่วมเป็นสักขีพยานในวันสำคัญของเรา ท่ามกลางความอบอุ่นและรอยยิ้มของคนที่เรารัก</p>
+        <div class="meta">
+          <span class="chip">📅 วันที่: 2027 (กำหนดการเร็ว ๆ นี้)</span>
+          <span class="chip">🕕 เวลา: 18:00</span>
+          <span class="chip">👗 Dress Code: Soft Neutrals</span>
         </div>
-
-        <div>
-          <div class="photo-card" role="img" aria-label="Soft airy couple photo placeholder">
-            <div class="photo-label">
-              Replace with a bright, airy photo (e.g., beach / garden / studio with soft daylight)
-            </div>
-          </div>
-
-          <svg class="art couple" viewBox="0 0 220 220" aria-hidden="true">
-            <path d="M58 164c8-26 18-45 34-58" fill="none" stroke="rgba(180,110,99,.65)" stroke-width="2" stroke-linecap="round"/>
-            <path d="M92 106c10-10 22-15 36-14" fill="none" stroke="rgba(180,110,99,.65)" stroke-width="2" stroke-linecap="round"/>
-            <path d="M128 92c16 2 28 10 36 24" fill="none" stroke="rgba(180,110,99,.65)" stroke-width="2" stroke-linecap="round"/>
-            <path d="M70 92c0-18 10-32 24-32s24 14 24 32" fill="none" stroke="rgba(31,31,31,.28)" stroke-width="2" stroke-linecap="round"/>
-            <path d="M122 104c0-18 10-32 24-32s24 14 24 32" fill="none" stroke="rgba(31,31,31,.28)" stroke-width="2" stroke-linecap="round"/>
-            <path d="M84 128c6 18 18 30 34 30 18 0 30-12 34-30" fill="none" stroke="rgba(31,31,31,.22)" stroke-width="2" stroke-linecap="round"/>
-            <path d="M62 170c26 6 70 6 96 0" fill="none" stroke="rgba(31,31,31,.18)" stroke-width="2" stroke-linecap="round"/>
-          </svg>
+        <div class="btns">
+          <a class="btn primary" href="#rsvp">RSVP</a>
+          <a class="btn" href="#venue">View Venue</a>
         </div>
       </div>
-    </header>
-
-    <!-- WELCOME -->
-    <section id="welcome">
-      <div class="section-inner">
-        <svg class="art flower-1" viewBox="0 0 240 240" aria-hidden="true">
-          <g fill="none" stroke="rgba(180,110,99,.35)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M164 44c-12 26-22 46-30 60"/>
-            <path d="M132 104c-6 18-10 34-12 48"/>
-            <path d="M140 60c16 6 28 16 36 30"/>
-            <path d="M124 82c-18 2-34 10-48 24"/>
-            <path d="M110 116c-20 6-34 18-44 36"/>
-            <path d="M174 92c18 2 32 10 44 24"/>
-            <path d="M186 66c8-10 16-18 24-24"/>
-            <path d="M106 60c-8-10-16-18-24-24"/>
-            <path d="M122 70c10 10 18 18 24 24"/>
-            <path d="M152 82c-10 10-18 18-24 24"/>
-            <path d="M96 140c12-2 22 2 30 12"/>
-            <path d="M168 132c-12-2-22 2-30 12"/>
-            <path d="M120 150c10 8 20 8 30 0"/>
-          </g>
-        </svg>
-
-        <p class="kicker">Welcome</p>
-        <h2>A warm invitation, from us to you</h2>
-        <p class="lead">
-          We’re grateful for every moment, every lesson, and every person who has walked alongside us.
-          Please join us as we celebrate our marriage and share an evening of love, joy, and togetherness.
-        </p>
-      </div>
-    </section>
-<section id="gallery">
-      <div class="section-inner">
-        <p class="kicker">Gallery</p>
-        <h2>Moments in soft light</h2>
-        <p class="lead">A gentle collection of memories—bright, airy, and full of warmth.</p>
-
-        <div class="gallery" aria-label="Photo gallery grid">
-          <!-- Replace these 4 src images with your own -->
-          <div class="g-item g1" data-full="https://images.unsplash.com/photo-1523437237164-d442d57cc3c9?auto=format&fit=crop&w=1600&q=80" aria-label="Open photo 1">
-            <img src="https://images.unsplash.com/photo-1523437237164-d442d57cc3c9?auto=format&fit=crop&w=1200&q=80" alt="Gallery photo 1" loading="lazy" />
-          </div>
-          <div class="g-item g2" data-full="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1600&q=80" aria-label="Open photo 2">
-            <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1200&q=80" alt="Gallery photo 2" loading="lazy" />
-          </div>
-          <div class="g-item g3" data-full="https://images.unsplash.com/photo-1520975958225-4f6d8d32b07a?auto=format&fit=crop&w=1600&q=80" aria-label="Open photo 3">
-            <img src="https://images.unsplash.com/photo-1520975958225-4f6d8d32b07a?auto=format&fit=crop&w=1200&q=80" alt="Gallery photo 3" loading="lazy" />
-          </div>
-          <div class="g-item g4" data-full="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1600&q=80" aria-label="Open photo 4">
-            <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1200&q=80" alt="Gallery photo 4" loading="lazy" />
-          </div>
-        </div>
-
-        <p class="hint">Tip: แนะนำรูปโทนสว่าง แสงธรรมชาติ และพื้นหลังโปร่ง จะได้ “Korean Airy” ที่สุด</p>
-      </div>
+      <div class="photo-box">แทนที่ด้วยภาพคู่บ่าวสาวโทนสว่าง</div>
     </section>
 
-    <!-- DETAILS -->
-    <section id="details">
-      <div class="section-inner">
-        <p class="kicker">Wedding Details</p>
-        <h2>Date & Time</h2>
+    <section class="panel">
+      <div class="small-title">Welcome</div>
+      <h2>A warm invitation, from us to you</h2>
+      <p>เราขอบคุณทุกช่วงเวลาที่มีทุกคนอยู่เคียงข้าง และอยากชวนมาฉลองค่ำคืนแห่งความรัก ความสุข และความทรงจำดี ๆ ไปด้วยกัน</p>
+    </section>
 
-        <div class="grid-2">
-          <div class="card">
-            <p class="label">Ceremony</p>
-            <p class="value"><strong>2027</strong><br/>18:00 (Please arrive 30 minutes early)</p>
-          </div>
-          <div class="card">
-            <p class="label">Reception</p>
-            <p class="value"><strong>Immediately after</strong><br/>Dinner • Toasts • Warm moments</p>
-          </div>
+    <section class="panel" id="details">
+      <div class="small-title">Wedding Details</div>
+      <h2>Date &amp; Time</h2>
+      <div class="two-col">
+        <div class="block">
+          <div class="small-title">Ceremony</div>
+          <p><strong>2027</strong><br>18:00 (กรุณามาก่อนเวลา 30 นาที)</p>
+        </div>
+        <div class="block">
+          <div class="small-title">Reception</div>
+          <p><strong>Immediately after</strong><br>Dinner • Toasts • Warm moments</p>
         </div>
       </div>
     </section>
 
-    <!-- GALLERY -->
-    
-    <!-- VENUE -->
-    <section id="venue">
-      <div class="section-inner">
-        <svg class="art flower-2" viewBox="0 0 260 260" aria-hidden="true">
-          <g fill="none" stroke="rgba(180,110,99,.28)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M64 206c26-22 46-42 60-60"/>
-            <path d="M124 146c14-18 26-38 36-60"/>
-            <path d="M150 170c-10-12-12-26-6-40"/>
-            <path d="M92 164c12 4 22 12 30 24"/>
-            <path d="M166 132c14-4 28 0 40 12"/>
-            <path d="M96 120c-10-10-18-22-24-36"/>
-            <path d="M184 108c10-10 22-18 36-24"/>
-            <path d="M128 108c-8 10-18-30 24"/>
-            <path d="M144 128c10 8 20 8 30 0"/>
-          </g>
-        </svg>
-
-        <p class="kicker">Venue</p>
-        <h2>Location</h2>
-
-        <div class="grid-2">
-          <div class="card">
-            <p class="label">Venue Name</p>
-            <p class="value"><strong>Your Venue</strong><br/>Full address line 1<br/>City, Country</p>
-            <p class="hint">Add parking info, BTS/MRT notes, or a short landmark description here.</p>
-          </div>
-
-          <div class="card">
-            <p class="label">Map</p>
-            <div class="map" aria-label="Map placeholder">
-              <div class="map-pin" aria-hidden="true"></div>
-            </div>
-            <p class="hint">Replace this with an embedded Google Map iframe or a static map image.</p>
-          </div>
+    <section class="panel" id="venue">
+      <div class="small-title">Venue</div>
+      <h2>Location</h2>
+      <div class="two-col">
+        <div class="block">
+          <div class="small-title">Venue Name</div>
+          <p><strong>Your Venue</strong><br>Full address line 1<br>City, Country</p>
+        </div>
+        <div class="block">
+          <div class="small-title">Map</div>
+          <div class="map">MAP PLACEHOLDER</div>
         </div>
       </div>
     </section>
 
-    <!-- RSVP (Google Form link) -->
-    <section id="rsvp">
-      <div class="section-inner">
-        <p class="kicker">RSVP</p>
-        <h2>Kindly respond</h2>
-        <p class="lead">
-          Please confirm your attendance via our Google Form. We can’t wait to celebrate with you.
-        </p>
-
-        <div class="cta-row" style="margin-top:16px;">
-          <a class="btn primary" id="rsvpLink" href="#" target="_blank" rel="noopener">Open RSVP (Google Form)</a>
-          <a class="btn" href="#top">Back to Top</a>
-        </div>
-
-        <p class="hint">
-          ถ้ากดแล้วไม่ไป: ให้ใส่ลิงก์ Google Form ที่ตัวแปร <strong>RSVP_URL</strong> ด้านบน
-        </p>
+    <section class="panel" id="rsvp">
+      <div class="small-title">RSVP</div>
+      <h2>Kindly respond</h2>
+      <p>ยืนยันการเข้าร่วมได้ผ่าน Google Form (ใส่ลิงก์จริงแทน #)</p>
+      <div class="btns" style="margin-top:10px">
+        <a class="btn primary" href="#" target="_blank" rel="noopener">Open RSVP (Google Form)</a>
+        <a class="btn" href="#top">Back to top</a>
       </div>
     </section>
-
-    <footer>
-      <div style="font-family:var(--serif);font-size:18px;color:rgba(31,31,31,.72);">
-        With love, May & Boy
-      </div>
-      <div style="margin-top:8px;">
-        A soft, warm celebration in 2027 • Minimal • Airy • Heartfelt
-      </div>
-    </footer>
-  </div>
-
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <div class="lightbox-panel" role="dialog" aria-label="Image lightbox">
-      <img class="lightbox-img" id="lightboxImg" alt="Expanded gallery image" />
-      <div class="lightbox-bar">
-        <span id="lightboxHint">Tap outside or press ESC to close</span>
-        <button class="lb-btn" id="closeLb" type="button">Close</button>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    // Wire RSVP button
-    const rsvpBtn = document.getElementById("rsvpLink");
-    rsvpBtn.href = RSVP_URL;
-
-    // Lightbox
-    const lb = document.getElementById("lightbox");
-    const lbImg = document.getElementById("lightboxImg");
-    const closeBtn = document.getElementById("closeLb");
-
-    function openLightbox(src){
-      lbImg.src = src;
-      lb.classList.add("open");
-      lb.setAttribute("aria-hidden","false");
-      document.body.style.overflow = "hidden";
-    }
-    function closeLightbox(){
-      lb.classList.remove("open");
-      lb.setAttribute("aria-hidden","true");
-      lbImg.src = "";
-      document.body.style.overflow = "";
-    }
-
-    document.querySelectorAll(".g-item").forEach(item=>{
-      item.addEventListener("click", ()=>{
-        const full = item.getAttribute("data-full") || item.querySelector("img")?.src;
-        openLightbox(full);
-      });
-    });
-
-    // Close on background click (outside panel)
-    lb.addEventListener("click", (e)=>{
-      if(e.target === lb) closeLightbox();
-    });
-    closeBtn.addEventListener("click", closeLightbox);
-
-    // Close on ESC
-    document.addEventListener("keydown", (e)=>{
-      if(e.key === "Escape" && lb.classList.contains("open")) closeLightbox();
-    });
-
-    // Simple safety: if RSVP_URL not set
-    if(!RSVP_URL || RSVP_URL.includes("PASTE_YOUR_GOOGLE_FORM_LINK_HERE")){
-      rsvpBtn.addEventListener("click", (e)=>{
-        e.preventDefault();
-        alert("Please set RSVP_URL to your Google Form link in the <script> at the top of the page.");
-      });
-    }
-  </script>
+  </main>
 </body>
 </html>
