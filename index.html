@@ -169,7 +169,7 @@
       position:absolute; inset:0;
       width:100%; height:100%;
       object-fit:cover;
-      opacity:.85;
+      opacity:.88;
       filter: contrast(1.02) brightness(1.02);
     }
     .photo-label{
@@ -180,14 +180,6 @@
       background: linear-gradient(180deg, transparent, rgba(255,255,255,.92));
       border-top:1px solid rgba(31,31,31,.06);
       position:relative;
-    }
-    .photo-card::before{
-      content:"";
-      position:absolute;inset:-40px -40px auto auto;
-      width:220px;height:220px;border-radius:50%;
-      background: radial-gradient(circle, rgba(247,216,207,.75), transparent 70%);
-      transform: rotate(12deg);
-      pointer-events:none;
     }
 
     /* Section layout */
@@ -252,233 +244,65 @@
       font-size:18px;
     }
 
-    /* Map placeholder */
-    .map{
-      border-radius:18px;
-      border:1px dashed rgba(31,31,31,.18);
-      background:
-        linear-gradient(135deg, rgba(247,216,207,.28), rgba(255,255,255,.92));
-      aspect-ratio: 16 / 9;
-      position:relative;
-      overflow:hidden;
-    }
-    .map::after{
-      content:"Map Placeholder";
-      position:absolute;inset:0;
-      display:flex;align-items:center;justify-content:center;
-      font-size:13px;color:rgba(31,31,31,.60);
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
-    .map-pin{
-      position:absolute;
-      left:50%;top:50%;
-      transform: translate(-50%, -60%);
-      width:18px;height:18px;border-radius:50%;
-      background: var(--oros);
-      border:1px solid rgba(180,110,99,.25);
-      box-shadow: 0 10px 24px rgba(0,0,0,.10);
-    }
-    .map-pin::after{
-      content:"";
-      position:absolute;
-      left:50%;top:100%;
-      transform: translateX(-50%);
-      width:0;height:0;
-      border-left:7px solid transparent;
-      border-right:7px solid transparent;
-      border-top:10px solid rgba(247,216,207,.95);
-      filter: drop-shadow(0 2px 1px rgba(0,0,0,.08));
-    }
-
     .hint{ font-size:12px; color:rgba(31,31,31,.58); line-height:1.6; margin:8px 0 0; }
     .divider{ height:1px;background:var(--line); margin:18px 0 0; }
 
-    /* Decorative line art */
-    .art{
-      position:absolute;
-      pointer-events:none;
-      opacity:.55;
-      filter: drop-shadow(0 10px 18px rgba(0,0,0,.04));
-    }
-    .art.flower-1{ right:-40px; top:-30px; width:220px; }
-    .art.flower-2{ left:-46px; bottom:-56px; width:240px; opacity:.38; }
-    .art.couple{
-      position:static;
-      width:180px;
-      margin-left:auto;
-      opacity:.7;
-    }
-
-    /* ===================== BOOK GALLERY (Open Book) ===================== */
-    .book-shell{
-      position:relative;
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.72);
-      box-shadow: 0 10px 30px rgba(0,0,0,.04);
-      overflow:hidden;
-    }
-    .book-head{ padding:22px 26px 0; }
-
-    .book-scroll{
-      display:flex;
-      gap:16px;
-      overflow:auto;
-      padding: 14px 14px 22px;
-      scroll-snap-type:x mandatory;
-      -webkit-overflow-scrolling: touch;
-    }
-    .book-scroll::-webkit-scrollbar{ height:8px; }
-    .book-scroll::-webkit-scrollbar-thumb{
-      background: rgba(31,31,31,.12);
-      border-radius:999px;
-    }
-
-    .book-spread{
-      scroll-snap-align:center;
-      flex: 0 0 auto;
-      width: min(900px, 92vw);
-      position:relative;
-      border-radius: 22px;
-      overflow:hidden;
-      border:1px solid rgba(31,31,31,.10);
-      background:
-        radial-gradient(800px 420px at 20% 20%, rgba(247,216,207,.30), transparent 55%),
-        linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.70));
-      box-shadow: 0 18px 46px rgba(0,0,0,.08);
-    }
-    .book-spread::before{
-      content:"";
-      position:absolute; inset:0;
-      background:
-        radial-gradient(circle at 20% 25%, rgba(255,255,255,.95), transparent 55%),
-        repeating-linear-gradient(0deg, rgba(31,31,31,.03), rgba(31,31,31,.03) 1px, transparent 1px, transparent 12px);
-      opacity:.22;
-      pointer-events:none;
-    }
-
-    .book{
-      position:relative;
-      aspect-ratio: 16 / 9;
-      min-height: 360px;
+    /* ===================== THUMB GALLERY (6) ===================== */
+    .thumb-grid{
       display:grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+      padding:18px;
     }
-    .page{
-      position:relative;
-      padding: 18px;
-      overflow:hidden;
-    }
-    .page.left{
-      background: linear-gradient(90deg, rgba(0,0,0,.05), transparent 24%),
-                linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.74));
-    }
-    .page.right{
-      background: linear-gradient(-90deg, rgba(0,0,0,.05), transparent 24%),
-                linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.74));
-    }
-
-    .spine{
-      position:absolute; top:0; bottom:0; left:50%;
-      width: 54px; transform: translateX(-50%);
-      background:
-        radial-gradient(closest-side, rgba(0,0,0,.14), transparent 70%),
-        linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,.05));
-      opacity:.55;
-      pointer-events:none;
-    }
-    .spine::after{
-      content:"";
-      position:absolute; top:0; bottom:0; left:50%;
-      width:2px; transform: translateX(-50%);
-      background: rgba(0,0,0,.12);
-      opacity:.35;
-    }
-
-    .page.left::after,
-    .page.right::after{
-      content:"";
-      position:absolute; top:-20px; bottom:-20px;
-      width: 64px;
-      opacity:.35;
-      pointer-events:none;
-    }
-    .page.left::after{
-      right:-22px;
-      background: radial-gradient(closest-side at 0% 50%, rgba(0,0,0,.18), transparent 65%);
-    }
-    .page.right::after{
-      left:-22px;
-      background: radial-gradient(closest-side at 100% 50%, rgba(0,0,0,.18), transparent 65%);
-    }
-
-    .book-photo{
-      position:absolute;
-      width: clamp(160px, 28vw, 260px);
-      border-radius: 16px;
+    .thumb-photo{
+      border-radius:14px;
       overflow:hidden;
       border:1px solid rgba(31,31,31,.12);
-      background: rgba(255,255,255,.90);
-      box-shadow: 0 18px 40px rgba(0,0,0,.10);
+      background:#fff;
       cursor:pointer;
-      transform-origin: center;
+      aspect-ratio:1/1;
+      box-shadow:0 8px 18px rgba(0,0,0,.08);
     }
-    .book-photo::after{
-      content:"";
-      position:absolute; inset:0;
-      background: radial-gradient(240px 160px at 30% 20%, rgba(255,255,255,.70), transparent 55%);
-      pointer-events:none;
-    }
-    .book-photo img{
+    .thumb-photo img{
       width:100%;
       height:100%;
-      object-fit: cover;
+      object-fit:cover;
+      transition:transform .2s ease;
       display:block;
-      filter: brightness(1.03) contrast(1.02);
-      transform: scale(1.02);
-      transition: transform .18s ease;
+      transform:scale(1.02);
     }
-    .book-photo:hover img{ transform: scale(1.06); }
+    .thumb-photo:hover img{ transform:scale(1.08); }
 
-    .p1{ left: 8%; top: 12%; height: 64%; transform: rotate(-2.2deg); }
-    .p2{ right: 8%; top: 18%; height: 60%; transform: rotate(2.0deg); }
-
-    .book-dots{
-      position:absolute;
-      left:18px; bottom:14px;
-      display:flex; gap:8px; align-items:center;
-      opacity:.9;
-    }
-    .book-dot{
-      width:10px;height:10px;border-radius:999px;
-      border:1px solid rgba(31,31,31,.10);
-      box-shadow: 0 10px 18px rgba(0,0,0,.06);
-    }
-    .book-dot.a{ background: var(--blush); }
-    .book-dot.b{ background: var(--oros); }
-    .book-dot.c{ background: var(--peach); }
-    .book-dot.d{ background: var(--latte); }
-
-    .book-caption{
-      padding:10px 14px 14px;
-      color: rgba(31,31,31,.62);
-      font-size:12px;
-      letter-spacing:.06em;
-      border-top:1px solid rgba(31,31,31,.06);
-      background: linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.85));
+    /* Map */
+    .map{
+      border-radius:18px;
+      border:1px dashed rgba(31,31,31,.18);
+      background: linear-gradient(135deg, rgba(247,216,207,.28), rgba(255,255,255,.92));
+      aspect-ratio: 16 / 9;
+      position:relative;
+      overflow:hidden;
     }
 
-    /* ===================== GLASS LIGHTBOX ===================== */
+    /* ===================== GLASS LIGHTBOX + FADE ===================== */
     .lightbox{
       position:fixed; inset:0;
-      display:none;
+      display:flex;
       align-items:center; justify-content:center;
       padding:18px;
       background: rgba(15,15,15,.55);
       z-index: 9999;
+
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+      transition: opacity .22s ease, visibility .22s ease;
     }
-    .lightbox.open{ display:flex; }
+    .lightbox.open{
+      opacity:1;
+      visibility:visible;
+      pointer-events:auto;
+    }
+
     .lb-panel{
       width: min(980px, 96vw);
       border-radius: 22px;
@@ -488,14 +312,26 @@
       backdrop-filter: blur(14px);
       box-shadow: 0 30px 90px rgba(0,0,0,.35);
       position:relative;
+
+      transform: translateY(10px) scale(.985);
+      opacity:0;
+      transition: transform .24s ease, opacity .24s ease;
     }
+    .lightbox.open .lb-panel{
+      transform: translateY(0) scale(1);
+      opacity:1;
+    }
+
     .lb-img{
       width:100%;
       max-height: 80vh;
       object-fit: contain;
       display:block;
       background: rgba(255,255,255,.06);
+      opacity:0;
+      transition: opacity .22s ease;
     }
+
     .lb-bar{
       display:flex; justify-content:space-between; align-items:center; gap:10px;
       padding:12px 14px;
@@ -524,94 +360,16 @@
     @media (max-width: 860px){
       .hero-inner{ grid-template-columns: 1fr; }
       .photo-card{ aspect-ratio: 16 / 10; }
-      .art.couple{ margin: 6px 0 0; }
     }
     @media (max-width: 720px){
-      .book{ grid-template-columns: 1fr; aspect-ratio:auto; min-height: 520px; }
-      .spine{ display:none; }
-      .page{ min-height: 260px; }
-      .p1{ left: 10%; top: 10%; width: 80%; height: 70%; transform: rotate(-1.6deg); }
-      .p2{ left: 10%; top: 12%; width: 80%; height: 70%; transform: rotate(1.6deg); }
+      .thumb-grid{ grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 620px){
       .wrap{ padding:16px; }
       .section-inner{ padding:20px; }
       .grid-2{ grid-template-columns: 1fr; }
       .nav{ display:none; }
-      .book-head{ padding:18px 20px 0; }
-      .book-scroll{ padding: 12px 12px 18px; }
     }
-  
-    /* ===================== GALLERY CONTROLS ===================== */
-    .gallery-controls{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      justify-content:flex-end;
-      padding: 10px 14px 0;
-      flex-wrap:wrap;
-    }
-    .gbtn{
-      appearance:none;
-      border:1px solid var(--line);
-      padding:10px 12px;
-      border-radius:999px;
-      background: rgba(255,255,255,.82);
-      color:rgba(31,31,31,.86);
-      font-size:13px;
-      cursor:pointer;
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
-      transition: transform .12s ease, background .12s ease;
-    }
-    .gbtn:hover{ transform: translateY(-1px); background: rgba(247,216,207,.28); }
-    .gbtn.primary{
-      background: linear-gradient(180deg, rgba(247,216,207,.92), rgba(247,216,207,.58));
-      border-color: rgba(180,110,99,.18);
-      color: rgba(88,40,34,.95);
-    }
-    .gstatus{
-      font-size:12px;
-      color: rgba(31,31,31,.58);
-      letter-spacing:.06em;
-      padding: 0 6px;
-      user-select:none;
-    }
-
-  
-    
-    /* ===================== AUTOPLAY SLIDER (3 PER VIEW) ===================== */
-    .slides{
-      display:flex;
-      width:100%;
-      will-change: transform;
-      transition: transform .6s ease;
-    }
-    .slide{
-      flex: 0 0 33.3333%;
-      padding:10px;
-      box-sizing:border-box;
-    }
-    .slide-photo{
-      border-radius: 14px;
-      overflow:hidden;
-      border:1px solid rgba(31,31,31,.12);
-      background:#fff;
-      aspect-ratio:1/1;
-      cursor:pointer;
-    }
-    .slide-photo img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-      transition:transform .2s ease;
-    }
-    .slide-photo:hover img{transform:scale(1.05);}
-
-    }
-
   </style>
 </head>
 
@@ -667,98 +425,31 @@
             <img src="images/06_flower.jpg" alt="May & Boy photo">
             <div class="photo-label">Our story — from childhood to forever</div>
           </div>
-
-          <svg class="art couple" viewBox="0 0 220 220" aria-hidden="true">
-            <path d="M58 164c8-26 18-45 34-58" fill="none" stroke="rgba(180,110,99,.65)" stroke-width="2" stroke-linecap="round"/>
-            <path d="M92 106c10-10 22-15 36-14" fill="none" stroke="rgba(180,110,99,.65)" stroke-width="2" stroke-linecap="round"/>
-            <path d="M128 92c16 2 28 10 36 24" fill="none" stroke="rgba(180,110,99,.65)" stroke-width="2" stroke-linecap="round"/>
-            <path d="M70 92c0-18 10-32 24-32s24 14 24 32" fill="none" stroke="rgba(31,31,31,.28)" stroke-width="2" stroke-linecap="round"/>
-            <path d="M122 104c0-18 10-32 24-32s24 14 24 32" fill="none" stroke="rgba(31,31,31,.28)" stroke-width="2" stroke-linecap="round"/>
-            <path d="M84 128c6 18 18 30 34 30 18 0 30-12 34-30" fill="none" stroke="rgba(31,31,31,.22)" stroke-width="2" stroke-linecap="round"/>
-            <path d="M62 170c26 6 70 6 96 0" fill="none" stroke="rgba(31,31,31,.18)" stroke-width="2" stroke-linecap="round"/>
-          </svg>
         </div>
       </div>
     </header>
 
-    <!-- GALLERY (Autoplay Slider) -->
-    <section class="slider-shell" id="gallery">
-      <div class="book-head">
+    <!-- GALLERY (6 thumbnails - tap to expand) -->
+    <section id="gallery">
+      <div class="section-inner" style="padding-bottom:10px;">
         <p class="kicker">Gallery</p>
         <h2>Our story</h2>
-        <p class="lead">Auto-sliding moments — tap a photo to view in a clear glass lightbox.</p>
+        <p class="lead">Tap a photo to view in full size.</p>
       </div>
 
-      <div class="slider" aria-label="Autoplay gallery slider">
-        <div class="slides" id="slides">
-          <figure class="slide">
-            <div class="slide-photo" data-full="images/01_childhood.jpg">
-              <img src="images/01_childhood.jpg" alt="Childhood" loading="lazy">
-            </div>
-            <figcaption class="slide-cap">Chapter 1 — Childhood friends</figcaption>
-          </figure>
-
-          <figure class="slide">
-            <div class="slide-photo" data-full="images/02_school_walk.jpg">
-              <img src="images/02_school_walk.jpg" alt="School days" loading="lazy">
-            </div>
-            <figcaption class="slide-cap">Chapter 1 — School days</figcaption>
-          </figure>
-
-          <figure class="slide">
-            <div class="slide-photo" data-full="images/03_time_pass.jpg">
-              <img src="images/03_time_pass.jpg" alt="Time passes" loading="lazy">
-            </div>
-            <figcaption class="slide-cap">Chapter 2 — Time flies</figcaption>
-          </figure>
-
-          <figure class="slide">
-            <div class="slide-photo" data-full="images/04_reunion.jpg">
-              <img src="images/04_reunion.jpg" alt="Reunion" loading="lazy">
-            </div>
-            <figcaption class="slide-cap">Chapter 2 — We meet again</figcaption>
-          </figure>
-
-          <figure class="slide">
-            <div class="slide-photo" data-full="images/05_talking.jpg">
-              <img src="images/05_talking.jpg" alt="Getting closer" loading="lazy">
-            </div>
-            <figcaption class="slide-cap">Chapter 3 — Getting closer</figcaption>
-          </figure>
-
-          <figure class="slide">
-            <div class="slide-photo" data-full="images/06_flower.jpg">
-              <img src="images/06_flower.jpg" alt="A flower" loading="lazy">
-            </div>
-            <figcaption class="slide-cap">Chapter 3 — A small flower, a big promise</figcaption>
-          </figure>
-        </div>
-
-        <div class="dots" id="dots" aria-hidden="true"></div>
+      <div class="thumb-grid" aria-label="Photo gallery">
+        <div class="thumb-photo" data-full="images/01_childhood.jpg"><img src="images/01_childhood.jpg" alt="Childhood" loading="lazy"></div>
+        <div class="thumb-photo" data-full="images/02_school_walk.jpg"><img src="images/02_school_walk.jpg" alt="School" loading="lazy"></div>
+        <div class="thumb-photo" data-full="images/03_time_pass.jpg"><img src="images/03_time_pass.jpg" alt="Time passes" loading="lazy"></div>
+        <div class="thumb-photo" data-full="images/04_reunion.jpg"><img src="images/04_reunion.jpg" alt="Reunion" loading="lazy"></div>
+        <div class="thumb-photo" data-full="images/05_talking.jpg"><img src="images/05_talking.jpg" alt="Talking" loading="lazy"></div>
+        <div class="thumb-photo" data-full="images/06_flower.jpg"><img src="images/06_flower.jpg" alt="Flower" loading="lazy"></div>
       </div>
     </section>
 
     <!-- WELCOME -->
     <section id="welcome">
       <div class="section-inner">
-        <svg class="art flower-1" viewBox="0 0 240 240" aria-hidden="true">
-          <g fill="none" stroke="rgba(180,110,99,.35)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M164 44c-12 26-22 46-30 60"/>
-            <path d="M132 104c-6 18-10 34-12 48"/>
-            <path d="M140 60c16 6 28 16 36 30"/>
-            <path d="M124 82c-18 2-34 10-48 24"/>
-            <path d="M110 116c-20 6-34 18-44 36"/>
-            <path d="M174 92c18 2 32 10 44 24"/>
-            <path d="M186 66c8-10 16-18 24-24"/>
-            <path d="M106 60c-8-10-16-18-24-24"/>
-            <path d="M122 70c10 10 18 18 24 24"/>
-            <path d="M152 82c-10 10-18 18-24 24"/>
-            <path d="M96 140c12-2 22 2 30 12"/>
-            <path d="M168 132c-12-2-22 2-30 12"/>
-            <path d="M120 150c10 8 20 8 30 0"/>
-          </g>
-        </svg>
-
         <p class="kicker">Welcome</p>
         <h2>A warm invitation, from us to you</h2>
         <p class="lead">
@@ -792,20 +483,6 @@
     <!-- VENUE -->
     <section id="venue">
       <div class="section-inner">
-        <svg class="art flower-2" viewBox="0 0 260 260" aria-hidden="true">
-          <g fill="none" stroke="rgba(180,110,99,.28)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M64 206c26-22 46-42 60-60"/>
-            <path d="M124 146c14-18 26-38 36-60"/>
-            <path d="M150 170c-10-12-12-26-6-40"/>
-            <path d="M92 164c12 4 22 12 30 24"/>
-            <path d="M166 132c14-4 28 0 40 12"/>
-            <path d="M96 120c-10-10-18-22-24-36"/>
-            <path d="M184 108c10-10 22-18 36-24"/>
-            <path d="M128 108c-8 10-18 18-30 24"/>
-            <path d="M144 128c10 8 20 8 30 0"/>
-          </g>
-        </svg>
-
         <p class="kicker">Venue</p>
         <h2>Location</h2>
 
@@ -818,8 +495,8 @@
 
           <div class="card">
             <p class="label">Map</p>
-
             <div class="map" aria-label="Map">
+              <!-- ✅ เปลี่ยน q=... เป็นชื่อสถานที่/ที่อยู่ หรือพิกัด -->
               <iframe
                 title="Google Map"
                 src="https://www.google.com/maps?q=Bangkok%20Thailand&output=embed"
@@ -828,16 +505,17 @@
                 style="border:0;width:100%;height:100%;position:absolute;inset:0;"
                 allowfullscreen>
               </iframe>
-              <div class="map-pin" aria-hidden="true" style="display:none;"></div>
             </div>
+
             <div class="cta-row" style="margin-top:12px;">
-              <a class="btn primary" id="navBtn" href="https://www.google.com/maps/dir/?api=1&destination=Bangkok%20Thailand" target="_blank" rel="noopener">Navigate in Google Maps</a>
+              <!-- ✅ เปลี่ยน destination=... ให้ตรงกับสถานที่ -->
+              <a class="btn primary" href="https://www.google.com/maps/dir/?api=1&destination=Bangkok%20Thailand" target="_blank" rel="noopener">Navigate in Google Maps</a>
               <a class="btn" href="#top">Back to Top</a>
             </div>
-            <p class="hint">
-              เปลี่ยนสถานที่ได้โดยแก้ 2 จุดนี้ในโค้ด: <code>maps?q=...</code> และ <code>destination=...</code> (ใส่ชื่อสถานที่หรือพิกัดก็ได้)
-            </p>
 
+            <p class="hint">
+              เปลี่ยนสถานที่ได้โดยแก้ 2 จุดนี้: <code>maps?q=...</code> และ <code>destination=...</code>
+            </p>
           </div>
         </div>
       </div>
@@ -883,27 +561,36 @@
   </div>
 
   <script>
-    // Lightbox
+    // Lightbox (fade + image fade-in)
     const lightbox = document.getElementById('lightbox');
     const lbImg = document.getElementById('lbImg');
     const lbClose = document.getElementById('lbClose');
 
     function openLightbox(src){
-      try{ pauseSlider(); }catch(e){}
+      // reset image opacity for fade-in
+      lbImg.style.opacity = '0';
+      lbImg.onload = () => {
+        // small delay to make fade visible even on cached images
+        requestAnimationFrame(() => lbImg.style.opacity = '1');
+      };
       lbImg.src = src;
+
       lightbox.classList.add('open');
       lightbox.setAttribute('aria-hidden','false');
       document.body.style.overflow = 'hidden';
     }
+
     function closeLightbox(){
-      try{ resumeSlider(); }catch(e){}
       lightbox.classList.remove('open');
       lightbox.setAttribute('aria-hidden','true');
-      lbImg.src = '';
+
+      // allow fade-out before clearing src
+      setTimeout(() => { lbImg.src = ''; lbImg.style.opacity = '0'; }, 120);
       document.body.style.overflow = '';
     }
 
-    document.querySelectorAll('.book-photo, .slide-photo').forEach(p=>{
+    // ✅ Bind click for thumbs (and keep compatibility if you later add other classes)
+    document.querySelectorAll('.thumb-photo, .book-photo, .slide-photo').forEach(p=>{
       p.addEventListener('click', ()=>{
         const full = p.getAttribute('data-full') || p.querySelector('img')?.src;
         if(full) openLightbox(full);
@@ -913,59 +600,6 @@
     lightbox.addEventListener('click', (e)=>{ if(e.target === lightbox) closeLightbox(); });
     lbClose.addEventListener('click', closeLightbox);
     document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox(); });
-});
-    gNext?.addEventListener('click', ()=>{
-      const cur = closestSpreadIndex();
-      scrollToSpread(cur + 1);
-      setAuto(false);
-    });
-    gToggle?.addEventListener('click', ()=> setAuto(!autoOn));
-
-    // Pause autoplay on manual interaction (touch/mouse wheel)
-    ['wheel','touchstart','pointerdown'].forEach(evt=>{
-      bookScroll?.addEventListener(evt, ()=>{ if(autoOn) setAuto(false); }, {passive:true});
-    });
-
-    // Default: autoplay off
-    setAuto(false);
-
-  
-    // ===================== Slider Autoplay =====================
-    const slidesEl = document.getElementById('slides');
-    const slideEls = Array.from(document.querySelectorAll('.slide'));
-    const dotsEl = document.getElementById('dots');
-
-    let idx = 0;
-    const INTERVAL_MS = 800;
-
-    // Build dots (no buttons)
-    if(dotsEl && slideEls.length){
-      dotsEl.innerHTML = slideEls.map((_,i)=>`<span class="dot${i===0?' active':''}"></span>`).join('');
-    }
-    function setDotActive(i){
-      const dots = dotsEl ? Array.from(dotsEl.querySelectorAll('.dot')) : [];
-      dots.forEach((d,di)=> d.classList.toggle('active', di===i));
-    }
-
-    
-    function goTo(i){
-      if(!slidesEl || !slideEls.length) return;
-      idx = (i + slideEls.length) % slideEls.length;
-      slidesEl.style.transform = `translateX(${-idx*(100/3)}%)`;
-      setDotActive(idx);
-    }
-%)`;
-      setDotActive(idx);
-    }
-
-    // Autoplay always on
-    let timer = setInterval(()=> goTo(idx + 1), INTERVAL_MS);
-
-    // Pause while lightbox open, resume when closed
-    function pauseSlider(){ if(timer){ clearInterval(timer); timer=null; } }
-    function resumeSlider(){ if(!timer){ timer=setInterval(()=> goTo(idx + 1), INTERVAL_MS); } }
-
-
   </script>
 </body>
 </html>
