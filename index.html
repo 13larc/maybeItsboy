@@ -93,7 +93,7 @@
     .dot{ width:8px; height:8px; border-radius:50%; background: var(--oros); border:1px solid rgba(180,110,99,.25); }
 
     .swatches{ display:flex; gap:6px; align-items:center; }
-    .swatch{ width:12px; height:12px; border-radius:999px; border:1px solid rgba(31,31,31,.10); flex: 0 0 auto; }
+    .swatch{ width:50px; height:50px; border-radius:999px; border:1px solid rgba(31,31,31,.10); flex: 0 0 auto; }
     .swatch.blush{ background: var(--blush); }
     .swatch.oros{ background: var(--oros); }
     .swatch.peach{ background: var(--peach); }
@@ -170,13 +170,13 @@
   <div class="wrap">
     <div class="topbar">
       <div class="badge">Wedding Invitation</div>
-      <nav class="nav">
-        <a href="#Our story">Our story</a>
+      <nav class="nav"> 
         <a href="#welcome">Welcome</a>
         <a href="#details">Details</a>
         <a href="#gallery">Gallery</a>
         <a href="#venue">Venue</a>
         <a href="#rsvp">RSVP</a>
+         <a href="#Our story">Our story</a>
       </nav>
     </div>
 
@@ -186,6 +186,7 @@
           <h1 class="names"><span style="color: rgb(189 78 35 / 55%);font-weight:400;">May</span> <span style="color:rgba(31,31,31,.55);font-weight:400;">&</span> <span style="color: rgb(189 78 35 / 55%);font-weight:400;">BOY</span></h1>
           <h2><span style="color:rgba(31,31,31,.55);font-weight:400;">Maybe It’s Boy</span></h2>
           <p style="color:var(--muted); font-size:15px;">With hearts full of gratitude, we invite you to join us as we begin our next chapter.</p>
+            <div class="pill"><span class="dot"></span> <strong>Date:</strong> 23 ต.ค. 2027</div>
 
           <div class="countdown-box">
             <div class="timer-label">Days : Hours : Min : Sec</div>
@@ -201,21 +202,7 @@
           <img src="images/00_wedding.jpg" alt="May & Boy">
         </div>
       </div>
-    </header>
-
-    <section id="Our story">
-      <div class="section-inner">
-         <p class="kicker">Our story</p>
-       </div>
-      <div class="thumb-grid">
-        <div class="thumb-photo"><img src="images/01_childhood.jpg" onclick="openLB(this.src)"></div>
-        <div class="thumb-photo"><img src="images/02_school_walk.jpg" onclick="openLB(this.src)"></div>
-        <div class="thumb-photo"><img src="images/03_time_pass.jpg" onclick="openLB(this.src)"></div>
-        <div class="thumb-photo"><img src="images/04_reunion.jpg" onclick="openLB(this.src)"></div>
-        <div class="thumb-photo"><img src="images/05_talking.jpg" onclick="openLB(this.src)"></div>
-        <div class="thumb-photo"><img src="images/06_flower.jpg" onclick="openLB(this.src)"></div>
-      </div>
-    </section>
+    </header> 
 
     <section id="welcome">
       <div class="section-inner">
@@ -224,7 +211,6 @@
         <p style="line-height:1.8; color:var(--muted);">ยินดีต้อนรับทุกท่านร่วมเป็นสักขีพยานในวันสำคัญของเรา เราซาบซึ้งในทุกช่วงเวลาและขอบคุณทุกท่านที่ร่วมเดินทางมากับเราเสมอมา</p>
            
         <div class="hero-meta">
-            <div class="pill"><span class="dot"></span> <strong>Date:</strong> 23 ต.ค. 2027</div>
             <div class="pill">
               <span class="dot"></span>
               <strong>Dress Code:</strong> Soft Neutrals
@@ -259,6 +245,9 @@
         <div class="thumb-photo"><img src="images/04_w4.jpg" onclick="openLB(this.src)"></div>
         <div class="thumb-photo"><img src="images/05_w5.jpg" onclick="openLB(this.src)"></div>
         <div class="thumb-photo"><img src="images/06_w6.jpg" onclick="openLB(this.src)"></div>
+        <div class="thumb-photo"><img src="images/01_w1.jpg" onclick="openLB(this.src)"></div>
+        <div class="thumb-photo"><img src="images/02_w2.jpg" onclick="openLB(this.src)"></div>
+        <div class="thumb-photo"><img src="images/03_w3.jpg" onclick="openLB(this.src)"></div>
       </div>
     </section>
 
@@ -294,6 +283,19 @@
       </div>
     </section>
 
+   <section id="Our story">
+      <div class="section-inner">
+         <p class="kicker">Our story</p>
+       </div>
+      <div class="thumb-grid">
+        <div class="thumb-photo"><img src="images/01_childhood.jpg" onclick="openLB(this.src)"></div>
+        <div class="thumb-photo"><img src="images/02_school_walk.jpg" onclick="openLB(this.src)"></div>
+        <div class="thumb-photo"><img src="images/03_time_pass.jpg" onclick="openLB(this.src)"></div>
+        <div class="thumb-photo"><img src="images/04_reunion.jpg" onclick="openLB(this.src)"></div>
+        <div class="thumb-photo"><img src="images/05_talking.jpg" onclick="openLB(this.src)"></div>
+        <div class="thumb-photo"><img src="images/06_flower.jpg" onclick="openLB(this.src)"></div>
+      </div>
+    </section>
     <footer>
       <div style="font-family:var(--serif); font-size:18px;">With love, May & Boy</div>
       <div style="margin-top:8px;">2027 • Minimal • Airy • Heartfelt</div>
