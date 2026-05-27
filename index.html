@@ -1059,10 +1059,15 @@
     }
   </script>
 
-  <!-- MUSIC PLAYER (YouTube IFrame) -->
-  <!-- Hidden YouTube player -->
-  <div id="ytPlayerWrap" style="position:fixed;bottom:-9999px;left:-9999px;width:1px;height:1px;overflow:hidden;pointer-events:none;">
-    <div id="ytPlayer"></div>
+  <!-- MUSIC PLAYER (YouTube embed via iframe + postMessage) -->
+  <div id="ytPlayerWrap" style="position:fixed;bottom:-9999px;left:-9999px;width:200px;height:200px;overflow:hidden;pointer-events:none;opacity:0;">
+    <iframe id="ytIframe"
+      src="https://www.youtube.com/embed/ORrFJ63nlcA?enablejsapi=1&loop=1&playlist=ORrFJ63nlcA&autoplay=0&controls=0&rel=0&modestbranding=1&playsinline=1&origin=https://mbmemories.github.io"
+      allow="autoplay; encrypted-media"
+      allowfullscreen
+      frameborder="0"
+      style="width:200px;height:200px;">
+    </iframe>
   </div>
 
   <div id="musicLabel">♪ เพลงประกอบงานแต่ง</div>
