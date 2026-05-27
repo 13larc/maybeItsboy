@@ -1020,6 +1020,23 @@
     <img class="lb-img" id="lbImg">
   </div>
 
+  <!-- MUSIC PLAYER — MP3 -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="Perfect.mp3" type="audio/mpeg">
+  </audio>
+
+  <div id="musicLabel">♪ Perfect — Ed Sheeran</div>
+
+  <button id="musicBtn" onclick="toggleMusic()" title="เล่น / หยุดเพลง" aria-label="Toggle music">
+    <svg id="iconPlay" class="music-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 5.14v13.72a1 1 0 0 0 1.47.88l11-6.86a1 1 0 0 0 0-1.76l-11-6.86A1 1 0 0 0 8 5.14z"/>
+    </svg>
+    <svg id="iconPause" class="music-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+      <rect x="6" y="4" width="4" height="16" rx="1.5"/>
+      <rect x="14" y="4" width="4" height="16" rx="1.5"/>
+    </svg>
+  </button>
+
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 900, once: true, easing:'ease-out-cubic' });
@@ -1052,24 +1069,69 @@
     }
     setInterval(updateTimer, 1000);
     updateTimer();
+
     function openLB(src) {
       document.getElementById('lbImg').src = src;
       document.getElementById('lightbox').classList.add('open');
     }
+
+    // ===== MUSIC PLAYER — MP3 =====
+    const audio     = document.getElementById('bgMusic');
+    const btn       = document.getElementById('musicBtn');
+    const iconPlay  = document.getElementById('iconPlay');
+    const iconPause = document.getElementById('iconPause');
+    const label     = document.getElementById('musicLabel');
+    let   labelTimer = null;
+
+    function showLabel() {
+      label.classList.add('show');
+      clearTimeout(labelTimer);
+      labelTimer = setTimeout(() => label.classList.remove('show'), 3200);
+    }
+
+    function setPlaying(state) {
+      if (state) {
+        iconPlay.style.display  = 'none';
+        iconPause.style.display = '';
+        btn.classList.add('playing');
+        label.textContent = '♪ Perfect — Ed Sheeran';
+      } else {
+        iconPlay.style.display  = '';
+        iconPause.style.display = 'none';
+        btn.classList.remove('playing');
+        label.textContent = '⏸ หยุดพัก';
+      }
+      showLabel();
+    }
+
+    audio.addEventListener('play',  () => setPlaying(true));
+    audio.addEventListener('pause', () => setPlaying(false));
+    audio.addEventListener('ended', () => setPlaying(false));
+
+    function toggleMusic() {
+      if (audio.paused) {
+        audio.volume = 0;
+        audio.play().then(() => {
+          let v = 0;
+          const fade = setInterval(() => {
+            v = Math.min(v + 0.04, 0.6);
+            audio.volume = v;
+            if (v >= 0.6) clearInterval(fade);
+          }, 80);
+        }).catch(() => {
+          label.textContent = '⚠ กดอีกครั้งเพื่อเล่น';
+          showLabel();
+        });
+      } else {
+        let v = audio.volume;
+        const fade = setInterval(() => {
+          v = Math.max(v - 0.05, 0);
+          audio.volume = v;
+          if (v <= 0) { clearInterval(fade); audio.pause(); }
+        }, 60);
+      }
+    }
   </script>
-  <!-- MUSIC PLAYER — MP3 -->
-  <audio id="bgMusic" loop preload="auto">
-    <source src="Perfect.mp3" type="audio/mpeg">
-  </audio>
-  <div id="musicLabel">♪ Perfect — Ed Sheeran</div>
-  <button id="musicBtn" onclick="toggleMusic()" title="เล่น / หยุดเพลง" aria-label="Toggle music">
-    <svg id="iconPlay" class="music-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8 5.14v13.72a1 1 0 0 0 1.47.88l11-6.86a1 1 0 0 0 0-1.76l-11-6.86A1 1 0 0 0 8 5.14z"/>
-    </svg>
-    <svg id="iconPause" class="music-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display:none;">
-      <rect x="6" y="4" width="4" height="16" rx="1.5"/>
-      <rect x="14" y="4" width="4" height="16" rx="1.5"/>
-    </svg>
-  </button>
+
 </body>
 </html>
