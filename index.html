@@ -311,7 +311,7 @@
       aspect-ratio: 4/5; overflow:hidden;
       box-shadow: 0 20px 50px rgba(90,50,40,.12);
     }
-    .photo-card img{ width:100%; height:120%;  }
+    .photo-card img{ width:100%; height:120%; }
     .photo-card::after {
       content:'';
       position:absolute;
@@ -394,15 +394,16 @@
     }
     .tl-item:last-child { margin-bottom:0; }
 
-    /* Alternating: odd items — content left, even items — content right */
-    .tl-item .tl-content { }
-    .tl-item.right .tl-left  { order:3; text-align:left; padding-left:28px; }
-    .tl-item.right .tl-dot   { order:2; }
-    .tl-item.right .tl-right { order:1; text-align:right; padding-right:28px; }
+    /* LEFT: card | dot | empty   RIGHT: empty | dot | card */
+    .tl-item { display:grid; grid-template-columns:1fr 60px 1fr; }
 
-    .tl-item.left .tl-left  { order:1; text-align:right; padding-right:28px; }
-    .tl-item.left .tl-dot   { order:2; }
-    .tl-item.left .tl-right { order:3; text-align:left; padding-left:28px; }
+    .tl-item.left  .tl-left  { grid-column:1; text-align:right; padding-right:28px; }
+    .tl-item.left  .tl-dot   { grid-column:2; }
+    .tl-item.left  .tl-right { grid-column:3; }
+
+    .tl-item.right .tl-left  { grid-column:1; }
+    .tl-item.right .tl-dot   { grid-column:2; }
+    .tl-item.right .tl-right { grid-column:3; text-align:left; padding-left:28px; }
 
     .tl-dot {
       display:flex;
@@ -631,17 +632,46 @@
       .hero-inner{ grid-template-columns: 1fr; }
       .thumb-grid{ grid-template-columns: repeat(2,1fr); }
       .nav{ display:none; }
-      .timeline::before { left:20px; }
-      .tl-item { grid-template-columns: 40px 1fr; gap:0; }
-      .tl-item .tl-dot { order:1 !important; }
-      .tl-item .tl-left, .tl-item .tl-right {
-        order:2 !important;
-        grid-column:2;
-        text-align:left !important;
-        padding:0 0 0 16px !important;
+      /* Timeline mobile — single column, dot on left */
+      .timeline { padding: 24px 16px 32px; }
+      .timeline::before { left: 20px; transform: none; }
+
+      .tl-item,
+      .tl-item.left,
+      .tl-item.right {
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        grid-template-rows: auto;
+        gap: 0;
+        align-items: start;
       }
-      .tl-item .tl-empty { display:none; }
-      .tl-dot-circle { width:38px; height:38px; font-size:16px; }
+
+      /* dot always col 1 */
+      .tl-item.left  .tl-dot,
+      .tl-item.right .tl-dot {
+        grid-column: 1;
+        grid-row: 1;
+        justify-content: flex-start;
+        padding-top: 4px;
+      }
+
+      /* card always col 2, reset padding/alignment */
+      .tl-item.left  .tl-left,
+      .tl-item.right .tl-right {
+        grid-column: 2;
+        grid-row: 1;
+        text-align: left !important;
+        padding: 0 0 0 14px !important;
+      }
+
+      /* hide the empty placeholder div */
+      .tl-item.left  .tl-right,
+      .tl-item.right .tl-left {
+        display: none;
+      }
+
+      .tl-dot-circle { width: 38px; height: 38px; font-size: 16px; }
+      .tl-time { font-size: 18px; }
       .rsvp-grid { grid-template-columns:1fr; }
       .section-inner { padding:24px 20px; }
       .timeline { padding:24px 16px 32px; }
@@ -867,63 +897,58 @@
 
       <div class="timeline">
 
+        <!-- 07:19 LEFT -->
         <div class="tl-item left" data-aos="fade-right">
           <div class="tl-left">
             <div class="tl-card">
               <div class="tl-tag">เริ่มงาน</div>
               <div class="tl-time">07:19</div>
               <div class="tl-desc">พิธีสงฆ์</div>
-              <div class="tl-desc">ถวายภัตตาหาร รับพรจากพระสงฆ์ y<br>Buddhist Ceremon</div>
+              <div class="tl-desc">Buddhist Ceremony<br>ถวายภัตตาหาร รับพรจากพระสงฆ์</div>
             </div>
           </div>
-          <div class="tl-dot">
-            <div class="tl-dot-circle">🙏</div>
-          </div>
+          <div class="tl-dot"><div class="tl-dot-circle">🙏</div></div>
           <div class="tl-right"></div>
         </div>
 
+        <!-- 09:09 RIGHT -->
         <div class="tl-item right" data-aos="fade-left">
           <div class="tl-left"></div>
-          <div class="tl-dot">
-            <div class="tl-dot-circle">💍</div>
-          </div>
+          <div class="tl-dot"><div class="tl-dot-circle">💍</div></div>
           <div class="tl-right">
             <div class="tl-card">
               <div class="tl-tag">พิธีหมั้น</div>
               <div class="tl-time">09:09</div>
               <div class="tl-desc">แห่ขบวนขันหมาก</div>
-              <div class="tl-desc">สู่ขอ / หมั้น / รับไหว้<br>Traditional Engagement Ceremony</div>
- 
+              <div class="tl-desc">Traditional Engagement Ceremony<br>สู่ขอ / รับไหว้ </div>
             </div>
           </div>
         </div>
 
+        <!-- 10:29 LEFT -->
         <div class="tl-item left" data-aos="fade-right">
           <div class="tl-left">
             <div class="tl-card">
               <div class="tl-tag">พิธีสมรส</div>
               <div class="tl-time">10:29</div>
               <div class="tl-desc">พิธีหลังน้ำพระพุทธมนต์</div>
-              <div class="tl-desc">พิธีรดน้ำสังข์<br>Sacred Water Blessing Ceremony </div>
+              <div class="tl-desc">Sacred Water Blessing Ceremony<br>ฤกษ์มงคล พิธีรดน้ำสังข์</div>
             </div>
           </div>
-          <div class="tl-dot">
-            <div class="tl-dot-circle">🌸</div>
-          </div>
+          <div class="tl-dot"><div class="tl-dot-circle">🌸</div></div>
           <div class="tl-right"></div>
         </div>
 
+        <!-- 11:30 RIGHT -->
         <div class="tl-item right" data-aos="fade-left">
           <div class="tl-left"></div>
-          <div class="tl-dot">
-            <div class="tl-dot-circle">🥂</div>
-          </div>
+          <div class="tl-dot"><div class="tl-dot-circle">🥂</div></div>
           <div class="tl-right">
             <div class="tl-card">
               <div class="tl-tag">เลี้ยงฉลอง</div>
               <div class="tl-time">11:30</div>
               <div class="tl-desc">รับประทานอาหารเลี้ยงฉลองมงคล</div>
-              <div class="tl-desc">ร่วมแบ่งปันความสุขและความอบอุ่น <br>Wedding Luncheon Reception</div>
+              <div class="tl-desc">Wedding Luncheon Reception<br>ร่วมแบ่งปันความสุขและความอบอุ่น</div>
             </div>
           </div>
         </div>
