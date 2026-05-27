@@ -648,6 +648,62 @@
       .timeline-header { padding:28px 20px 8px; }
       .dress-grid { grid-template-columns:1fr; }
     }
+
+    /* ===== MUSIC PLAYER ===== */
+    #musicBtn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 9000;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, #C8857A, #9B5C55);
+      box-shadow: 0 6px 24px rgba(200,133,122,.45);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform .3s ease, box-shadow .3s ease;
+      outline: none;
+    }
+    #musicBtn:hover {
+      transform: scale(1.12);
+      box-shadow: 0 10px 32px rgba(200,133,122,.55);
+    }
+    #musicBtn.playing {
+      animation: pulseRing 2s ease-out infinite;
+    }
+    @keyframes pulseRing {
+      0%   { box-shadow: 0 6px 24px rgba(200,133,122,.45), 0 0 0 0 rgba(200,133,122,.5); }
+      70%  { box-shadow: 0 6px 24px rgba(200,133,122,.45), 0 0 0 16px rgba(200,133,122,0); }
+      100% { box-shadow: 0 6px 24px rgba(200,133,122,.45), 0 0 0 0 rgba(200,133,122,0); }
+    }
+    .music-icon { width: 22px; height: 22px; fill: white; }
+    /* song label */
+    #musicLabel {
+      position: fixed;
+      bottom: 36px;
+      right: 94px;
+      z-index: 9000;
+      background: rgba(42,31,26,.82);
+      color: rgba(255,255,255,.88);
+      font-size: 11px;
+      letter-spacing: .12em;
+      padding: 7px 14px;
+      border-radius: 999px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(200,133,122,.25);
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateX(10px);
+      transition: opacity .4s ease, transform .4s ease;
+      pointer-events: none;
+      font-family: var(--serif);
+      font-style: italic;
+    }
+    #musicLabel.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
   </style>
 </head>
 
@@ -1002,5 +1058,24 @@
       document.getElementById('lightbox').classList.add('open');
     }
   </script>
+
+  <!-- MUSIC PLAYER (YouTube IFrame) -->
+  <!-- Hidden YouTube player -->
+  <div id="ytPlayerWrap" style="position:fixed;bottom:-9999px;left:-9999px;width:1px;height:1px;overflow:hidden;pointer-events:none;">
+    <div id="ytPlayer"></div>
+  </div>
+
+  <div id="musicLabel">♪ เพลงประกอบงานแต่ง</div>
+
+  <button id="musicBtn" onclick="toggleMusic()" title="เล่น / หยุดเพลง" aria-label="Toggle music">
+    <svg id="iconPlay" class="music-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 5.14v13.72a1 1 0 0 0 1.47.88l11-6.86a1 1 0 0 0 0-1.76l-11-6.86A1 1 0 0 0 8 5.14z"/>
+    </svg>
+    <svg id="iconPause" class="music-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+      <rect x="6" y="4" width="4" height="16" rx="1.5"/>
+      <rect x="14" y="4" width="4" height="16" rx="1.5"/>
+    </svg>
+  </button>
+
 </body>
 </html>
