@@ -1052,26 +1052,16 @@
     }
     setInterval(updateTimer, 1000);
     updateTimer();
-
     function openLB(src) {
       document.getElementById('lbImg').src = src;
       document.getElementById('lightbox').classList.add('open');
     }
   </script>
-
-  <!-- MUSIC PLAYER (YouTube embed via iframe + postMessage) -->
-  <div id="ytPlayerWrap" style="position:fixed;bottom:-9999px;left:-9999px;width:200px;height:200px;overflow:hidden;pointer-events:none;opacity:0;">
-    <iframe id="ytIframe"
-      src="https://www.youtube.com/embed/ORrFJ63nlcA?enablejsapi=1&loop=1&playlist=ORrFJ63nlcA&autoplay=0&controls=0&rel=0&modestbranding=1&playsinline=1&origin=https://mbmemories.github.io"
-      allow="autoplay; encrypted-media"
-      allowfullscreen
-      frameborder="0"
-      style="width:200px;height:200px;">
-    </iframe>
-  </div>
-
-  <div id="musicLabel">♪ เพลงประกอบงานแต่ง</div>
-
+  <!-- MUSIC PLAYER — MP3 -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="Perfect.mp3" type="audio/mpeg">
+  </audio>
+  <div id="musicLabel">♪ Perfect — Ed Sheeran</div>
   <button id="musicBtn" onclick="toggleMusic()" title="เล่น / หยุดเพลง" aria-label="Toggle music">
     <svg id="iconPlay" class="music-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path d="M8 5.14v13.72a1 1 0 0 0 1.47.88l11-6.86a1 1 0 0 0 0-1.76l-11-6.86A1 1 0 0 0 8 5.14z"/>
@@ -1081,6 +1071,5 @@
       <rect x="14" y="4" width="4" height="16" rx="1.5"/>
     </svg>
   </button>
-
 </body>
 </html>
